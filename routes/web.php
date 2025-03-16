@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\Dashboard\CategoriesController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/',[CategoriesController::class,'index'])
+    ->middleware(['auth'])
+    ->name('dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -18,3 +20,5 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
+require __DIR__.'/dashboard.php';

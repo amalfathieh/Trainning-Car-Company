@@ -13,12 +13,11 @@ class CheckIsAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next)
     {
-
-        if(auth()->user()->role == 'user'){
-            return response()->json(['can not access']);
-        }
+//        if(auth()->user()->role == 'user'){
+//            return response()->json(['can not access']);
+//        }
 
         return $next($request);
     }
